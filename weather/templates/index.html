@@ -32,10 +32,27 @@
         </div>
         <div class="container">
             <div class="weathercard">
-                <h2>San Francisco</h2>
+                {% comment %} <h2>San Francisco</h2>
                 <span>90° F</span>
                 <br>
-                Clear and Sunny Weather
+                Clear and Sunny Weather {% endcomment %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-50x50">
+                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <span class="title">{{ weather.city }}</span>
+                                    <br>
+                                    <span class="subtitle">{{ weather.temperature }}° F</span>
+                                    <br> {{ weather.description }}
+                                </p>
+                            </div>
+                        </div>
             </div>
         </div>
     </body>
