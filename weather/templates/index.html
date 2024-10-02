@@ -27,6 +27,7 @@
         <div class="searchbar">
             <form method="POST">
             <input class="input" type="text" placeholder="City Name">
+            {% csrf_token %}
             <button>Add city</button>
         </div>
         <div class="container">
