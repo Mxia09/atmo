@@ -32,10 +32,7 @@
         </div>
         <div class="container">
             <div class="weathercard">
-                {% comment %} <h2>San Francisco</h2>
-                <span>90° F</span>
-                <br>
-                Clear and Sunny Weather {% endcomment %}
+                {% for weather in weather_data %}
                 <div class="box">
                     <article class="media">
                         <div class="media-left">
@@ -53,6 +50,7 @@
                                 </p>
                             </div>
                         </div>
+                        {% endfor %}
             </div>
         </div>
     </body>
