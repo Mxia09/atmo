@@ -1,3 +1,6 @@
 from django.contrib import admin
+from weather.models import City
 
-# Register your models here.
+@admin.register(City)
+class PrjectAdmin(admin.ModelAdmin):
+    list_display = ["name"]
