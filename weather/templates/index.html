@@ -2,8 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    {% csrf_token %}
-    <a href="{% url "logout" %}">logout</a>
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,9 +13,15 @@
         </title>
         <nav class="navbar">
             <ul>
+                {% if user.is_authenticated %}
                     <li>Home</li>
                     <li>Account</li>
-                    <li>Logout</li>
+                    <li><a href="{% url "logout" %}">Logout</a></li>
+                    {% csrf_token %}
+                {%else%}
+                    <li>Login</li>
+                    <li>Signup</li>
+                {% endif %}
             </ul>
         </nav>
     </head>
@@ -29,7 +34,6 @@
         <div class="searchbar">
             <form method="POST">
             <input class="input" type="text" placeholder="City Name">
-            {% csrf_token %}
             <button>Add city</button>
         </div>
         <div class="container">
