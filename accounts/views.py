@@ -25,26 +25,27 @@ def user_login(request):
         context = {"form": form}
         return render(request, "accounts/login.html", context)
 
-    def user_signup(request):
-        if request.method == "POST":
-            form = SignUpForm(request.POST)
-            if form.is_valid():
-                username = form.cleaned_data.get("username")
-                email = form.cleaned_data.get("email")
-                password = form.cleaned_data.get("password")
-                password_confirmation = form.cleaned_data.get("password_confirmation")
-
-                if password == password_confirmation:
-                    user = User.objects.create_user(
-                        username=username, email=email, password=password
-                    )
-
-                    login(request, user)
-                    return redirect("/")
-                else:
-                    form.add_error("password", "passwords do not match")
-
+def user_signup(request): 
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            username= form.cleaned_data.get("username")
+            email= form.cleaned_data.get("email")
+            password= form.cleaned_data.get("password")
+            password_confirmation= form.cleaned_data.get(
+                "password_confirmation")
+            
+            if password == password_confirmation:
+                user = User.objects.create_user(
+                    username=username, email=email, password=password
+                )
+                
+                login(request, user)
+                return redirect("/")
             else:
-                form = SignUpForm()
-                context = {"form": form}
-                return render(request, "accounts/signup", context)
+                form.add("password", "Passwords do not match")
+    else: 
+        form = SignUpForm
+        
+    context = {"form": form}
+    return render(request, "accounts/signup.html", context)

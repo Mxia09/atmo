@@ -1,4 +1,4 @@
-{% load static %}
+a{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
                     {% csrf_token %}
                 {%else%}
                     <li><a href="{% url "login" %}">Login</a></li>
-                    <li>Signup</li>
+                    <li><a href="{% url "signup" %}"> Signup</a></li>
                 {% endif %}
             </ul>
         </nav>
