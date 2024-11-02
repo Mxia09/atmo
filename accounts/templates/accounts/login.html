@@ -1,0 +1,15 @@
+{% load static %}
+
+<title>
+        User Login
+</title>
+<dib> 
+<body> 
+    <h1>User Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button>Login</button>
+    </form>
+</body>
+</div> 

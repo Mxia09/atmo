@@ -3,5 +3,5 @@ from weather.views import index
 
 
 urlpatterns = [
-    path('', index),
+    path('', index, name="home"),
 ]

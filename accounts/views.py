@@ -6,7 +6,8 @@ from accounts.forms import LoginForm
 
 def user_logout(request):
     logout(request)
-    return redirect("index.html")
+    return redirect("home")
+
 
 def user_login(request): 
     if request.method == "POST":
@@ -18,8 +19,8 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None: 
                 login(request, user)
-                return redirect("home")
-            else: 
-                form = LoginForm()
-            context = {"form": form}
-            return render(request, "accounts/login.html", context)
+                return redirect("/")
+    else: 
+        form = LoginForm()
+        context = {"form": form}
+        return render(request, "accounts/login.html", context)
